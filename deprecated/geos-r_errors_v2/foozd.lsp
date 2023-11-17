@@ -1,0 +1,5 @@
+(defun C:foozd ()
+  (setq LAYLIST '(0 "BOVERHANG" "RROADASPH")) 
+  (setq NLAYS (sslength LAYLIST))
+  (princ NLAYS)
+)

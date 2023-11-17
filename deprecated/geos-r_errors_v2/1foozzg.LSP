@@ -1,0 +1,28 @@
+(defun C:foozzg1 ()
+  (setq ERRORLIST))
+  (setq LAYCUR "B-OVERHANG")  (cleaner)
+  ;(setq LAYCUR "R-ROAD-ASPH") (cleaner ("R-ROAD-ASPH"))
+  ;(command "_layer" "_on" "*")
+  (print "Errors on:      ") (princ (setq n (length ERRORSTRING))                               ;"n"=number of duplicates
+    (setq i -1)                                          ;"i"=-1 (0 at beginning of list)
+    (repeat n
+      (setq CURRENT (ssname ERRORSTRING (setq i (1+ i))))         ;"CURRENT"=name of entity currently being evaluated
+      (princ " ")(princ (+ 1 i))(princ ".")
+      (princ i ERRORSTRING))           ;searches within the entity info for value type 8 (layer)  (princ)
+)
+
+(defun cleaner ()
+  (if (not (tblsearch "layer" "GEOS-R-TEMP")) 
+    (command "_layer" "m" "GEOS-R-TEMP" "")
+  )
+  (command "_layer" "set" LAYCUR "")
+  (command "_layer" "_off" "*" "N" "")
+  (command "_layer" "_on" LAYCUR "_on" "GEOS-R-TEMP" "")
+  (command "_mapclean" "GEOS-R-TEMP")
+  ;(princ (setq num (sslength (setq new (ssget "_A" '((8 . "GEOS-R-TEMP")))))))
+  (if (/= num 0)
+   (append ERRORSTRING '(LAYCUR))
+  )
+  ;(command "_layer" "d" "GEOS-R-TEMP" "")
+    ;(command "_layer" "_on" "*")
+ )

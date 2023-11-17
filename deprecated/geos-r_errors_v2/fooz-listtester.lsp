@@ -1,0 +1,5 @@
+(defun C:fooz ()
+  (setq LAYLIST (list 'B-OVERHANG 'R-ROAD-ASPH)) 
+  (setq NLAYS (sslength LAYLIST))
+  (princ NLAYS)
+)

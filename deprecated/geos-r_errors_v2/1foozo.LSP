@@ -1,0 +1,23 @@
+(defun C:foozo ()
+  (setq LAYCUR "B-OVERHANG")  (cleaner)
+  ;(setq LAYCUR "R-ROAD-ASPH") (cleaner ("R-ROAD-ASPH"))
+  ;(command "_layer" "_on" "*")
+  (princ)
+)
+
+(defun cleaner ()
+  (if (not (tblsearch "layer" "GEOS-R-TEMP")) 
+    (command "_layer" "m" "GEOS-R-TEMP" "")
+  )
+  (command "_layer" "set" LAYCUR "")
+  (command "_layer" "_off" "*" "N" "")
+  (command "_layer" "_on" LAYCUR "_on" "GEOS-R-TEMP" "")
+  (command "_mapclean" "GEOS-R-TEMP")
+  (princ (setq num (sslength (setq new (ssget "_A" '((8 . "GEOS-R-TEMP")))))))
+
+  ;(if
+   ;count the number of objects on layer 0
+  ;)
+  ;(command "_layer" "d" "GEOS-R-TEMP" "")
+    ;(command "_layer" "_on" "*")
+ )

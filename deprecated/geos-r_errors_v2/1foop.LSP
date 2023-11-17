@@ -1,0 +1,21 @@
+(defun C:foop ()
+  (setq LAYCUR "B-OVERHANG")  (cleaner)
+  ;(setq LAYCUR "R-ROAD-ASPH") (cleaner ("R-ROAD-ASPH"))
+  (print "success!!")
+)
+
+ (defun cleaner (LAYCUR)
+    ;(command "_layer" "m" "GEOS-R-TEMP" "") 
+    ;(setq expert (getvar "expert"))
+    ;(setvar "expert" 1)
+    (command "_layer" "_off" "*" "")
+    (command "_layer" "_on" LAYCUR "")
+    ;(setvar "expert" expert)
+    ;(princ (sslength (setq num (ssget "_A" '((8."GEOS-R-TEMP"))))))
+    ;(command "_mapclean" "GEOS-R-TEMP")
+    ;(if
+     ;count the number of objects on layer 0
+    ;)
+    ;(command "_layer" "d" "GEOS-R-TEMP" "")
+    ;(command "_layer" "_on" "*")
+ )

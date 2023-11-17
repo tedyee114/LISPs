@@ -1,0 +1,5 @@
+(defun C:fooze ()
+	(setq d '("M10" "M20" "M30" 10.25))
+  (setq NLAYS (sslength d))
+  (princ NLAYS)
+)

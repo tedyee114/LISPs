@@ -1,0 +1,10 @@
+(
+defun c:uncloseda ()
+   (command "_layer" "_off" "R-PAVEMARK-LINE" "")
+   (command "_layer" "_off" "GEOM-CHECKER-ARCHIVE" "")
+   (command "_layer" "_off" "U-MANHOLE" "")
+   (command "_layer" "_off" "U-CATCHBASIN" "")
+   (ssget "X" '((0 . "LWPOLYLINE") (70 . 0)))
+   (command "Pselect" "P" "")   
+   (command "ISOLATEOBJECTS")
+)

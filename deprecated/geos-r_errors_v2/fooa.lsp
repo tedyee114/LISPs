@@ -1,0 +1,6 @@
+(defun fooa ()
+  (setq LAYLIST)
+  (Setq NUM)
+  (setq LAYCUR (LAYLIST NUM))
+  (command "_LAYISO" "V-VEGETATION" "")
+)

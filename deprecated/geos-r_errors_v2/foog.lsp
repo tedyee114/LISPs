@@ -1,0 +1,7 @@
+(defun C:foog ()
+  ;(setq LAYLIST)
+  ;(Setq NUM)
+  ;(setq LAYCUR (LAYLIST NUM))
+  (command "_LAYFRZ")
+  (command "_LAYTHW" "B-OVERHANG" "")
+)

@@ -1,0 +1,26 @@
+(defun C:foj ()
+  (setq ERRORLIST (list Hi))
+  (setq LAYCUR "R-ROAD-ASPH")(setq ERROR A) (cleaner) ;A
+  (setq LAYCUR "B-OVERHANG") (setq ERROR B) (cleaner) ;B
+  (print "R-ROAD-ASPH" A)
+  (print "B-OVERHANG" B)
+  ;; (print "Errors on:      ")
+  ;; (while ERRORLIST
+  ;;   (print (car ERRORLIST))
+  ;;   (setq ERRORLIST (cdr ERRORLIST)))
+)
+
+(defun cleaner ()
+  (if (not (tblsearch "layer" "GEOS-R-TEMP")) 
+    (command "_layer" "m" "GEOS-R-TEMP" "")
+  )
+  (command "_layer" "set" LAYCUR "")
+  (command "_layer" "_off" "*" "N" "")
+  (command "_layer" "_on" LAYCUR "_on" "GEOS-R-TEMP" "")
+  (command "_mapclean" "GEOS-R-TEMP")
+  (if (/= num 0)
+    (setq ERROR 1)
+  )
+  (command "_laydel" "n" "GEOS-R-TEMP" "" "Y" "")
+  (command "_layer" "_on" "*" "")
+ )
