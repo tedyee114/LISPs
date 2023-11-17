@@ -1,5 +1,6 @@
 # LISPs
 AutoLISP add-ons for faster CAD work
+Main file is AirWorks_Package-[DATE].LSP
 Created by Ted Yee 2023 for open use at Airworks.io
 Designed for company procedures specifically, but modular pieces are adaptable for almost all AutoCAD use
 
@@ -23,7 +24,4 @@ Designed for company procedures specifically, but modular pieces are adaptable f
 ;AVX-     LINE 467- Adds Vertex on polyline (LW, 2D, 3D) 
 ;DVX-     LINE 761- Deletes Vertex on polyline (LW, 2D, 3D)
 
-;;Optional manual input of drawing cleanup file locations: (must use double slash \\, otherwise invalid)
-;(setq GER_LOCATION         "C:\\Users\\ted_airworks.io\\Documents\\Scripts\\LISPs\\GER.dpf")          ;GER.dpf is same as MAPCLEAN>BREAK CROSSING OBJECTS>INTERACTIVE
-;(setq DUPL_LOCATION        "C:\\Users\\ted_airworks.io\\Documents\\Scripts\\LISPs\\DUPL.dpf")         ;DUPL.dpf is same as MAPCLEAN>DELETE DUPLICATES>AUTOMATIC
-;(setq GEOS-R-TEMP_LOCATION "C:\\Users\\ted_airworks.io\\Documents\\Scripts\\LISPs\\GEOS-R-TEMP.dpf")  ;GEOS-R-TEMP.dpf is same as MAPCLEAN>BREAK CROSSING OBJECTS>AUTOMATIC, RETAIN ORIGINALS AND CREATE NEW OBJECTS ON LAYER "GEOS-R-TEMP"
+;;Optional manual input of drawing cleanup file locations: available within code, otherwise will look for them in the same folder (can be a repo)
