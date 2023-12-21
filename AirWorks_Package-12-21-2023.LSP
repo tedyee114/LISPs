@@ -11,20 +11,20 @@
 ;There were many versions of this, comments may not have been updated. If comment looks verywrong, it probably is outdated
 ;
 (defun c:SEECOMMANDS ()    ;;User Commands and their location in the script:
-(princ "MH,CB,CBR- LINE 039- places manhole, catchbasin, or round catchbaisn block if another exists in current drawing. Otherwise block import needed
+(princ"MH,CB,CBR,VALVE,PEDESTAL- LINE 039- places manhole, catchbasin, or round catchbaisn block if another exists in current drawing. Otherwise block import needed
 ")(princ "SAYIT-   LINE 058- reads out loud inputted text. For fun, lol
-")(princ "VERTNUM- LINE 068- prints number of vertices of selected polyline (sometimes off by 1)
-")(princ "BUFF-    LINE 080- breates buffer around polylines with entered values being full cross-width, options for endcaps and smooth corners
-")(princ "THWOMP-  LINE 155- hides company non-training layers, then isolates polylines with <=2nodes
-")(princ "UC-      LINE 174- same as QSELECT>POLYLINE>CLOSED>NO, isolates unclosed polylines on training layers
-")(princ "NB-      LINE 192- makes every entity's color \"By-Layer\", displays number of fixes made
-")(princ "GER-     LINE 199- *requires GER.dpf* runs MAPCLEAN with GER.dpf= MAPCLEAN>INTERACTIVE>BREAK CROSSING OBJECTS>FINISH (these saved as GER.pf), locates geos-r objects
-")(princ "BDT-     LINE 206- isolates \"bad dxf-types\" (unacceptable entities at company: anything that is not a polyline, a circle, or circular U-MANHOLE-TR)
-")(princ "DU-      LINE 250- *very calculation heavy* isolates duplicate objects
-")(princ "SWAG-    LINE 334- *requires GEOS-R-TEMP.dpf & DUPL.dpf* file checker like company used to use on swagger.io, checks for 2node polys, uncloseds, bad-dxf-types, geos-r errors, and fixes non-by-layer-colored and duplicate entities.
-")(princ "AVX-     LINE 491- Adds Vertex on polyline (LW, 2D, 3D) 
-")(princ "DVX-     LINE 787- Deletes Vertex on polyline (LW, 2D, 3D)
-")(princ "IB-      LINE 963- Imports block from another file
+")(princ "VERTNUM- LINE 083- prints number of vertices of selected polyline (sometimes off by 1)
+")(princ "BUFF-    LINE 095- breates buffer around polylines with entered values being full cross-width, options for endcaps and smooth corners
+")(princ "THWOMP-  LINE 170- hides company non-training layers, then isolates polylines with <=2nodes
+")(princ "UC-      LINE 189- same as QSELECT>POLYLINE>CLOSED>NO, isolates unclosed polylines on training layers
+")(princ "NB-      LINE 207- makes every entity's color \"By-Layer\", displays number of fixes made
+")(princ "GER-     LINE 214- *requires GER.dpf* runs MAPCLEAN with GER.dpf= MAPCLEAN>INTERACTIVE>BREAK CROSSING OBJECTS>FINISH (these saved as GER.pf), locates geos-r objects
+")(princ "BDT-     LINE 221- isolates \"bad dxf-types\" (unacceptable entities at company: anything that is not a polyline, a circle, or circular U-MANHOLE-TR)
+")(princ "DU-      LINE 265- *very calculation heavy* isolates duplicate objects
+")(princ "SWAG-    LINE 349- *requires GEOS-R-TEMP.dpf & DUPL.dpf* file checker like company used to use on swagger.io, checks for 2node polys, uncloseds, bad-dxf-types, geos-r errors, and fixes non-by-layer-colored and duplicate entities.
+")(princ "AVX-     LINE 506- Adds Vertex on polyline (LW, 2D, 3D) 
+")(princ "DVX-     LINE 802- Deletes Vertex on polyline (LW, 2D, 3D)
+")(princ "IB-      LINE 977- Imports block from another file
 ")(princ))
 
 ;;Optional manual input of drawing cleanup file locations: (must use double slash \\, otherwise invalid)
@@ -56,6 +56,20 @@
   (setq p (getpoint "\nPick Center: "))
   (command "INSERT" "_U-CB-ROUND" p "" "" "")
   (princ))
+
+(defun c:valve ()
+  (print "If a dialog box pops up, it means that the requested block is not in this drawing. import one with command IB and try again")  
+  (setq p (getpoint "\nPick Center: "))
+  (command "INSERT" "VALVE" p "" "" "")
+  (princ))
+
+(defun c:pedestal ()
+  (print "If a dialog box pops up, it means that the requested block is not in this drawing. import one with command IB and try again")  
+  (setq p (getpoint "\nPick Center: "))
+  (command "INSERT" "PEDESTAL" p "" "" "")
+  (princ))
+
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;user command; reads aloud inputted text;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defun c:SayIt (/ Phrase Sapi)
