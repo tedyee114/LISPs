@@ -10,7 +10,7 @@
 ;Active layer cannot be a non-training layer, otherwise there is an interrupt error
 ;There were many versions of this, comments may not have been updated. If comment looks verywrong, it probably is outdated
 ;
-(defun c:SEECOMMANDS ()    ;;User Commands:
+(defun c:SEECOMMANDS ()    ;;User Commands and their location in the script:
 (princ "MH,CB,CBR- LINE 039- places manhole, catchbasin, or round catchbaisn block if another exists in current drawing. Otherwise block import needed
 ")(princ "SAYIT-   LINE 058- reads out loud inputted text. For fun, lol
 ")(princ "VERTNUM- LINE 068- prints number of vertices of selected polyline (sometimes off by 1)
